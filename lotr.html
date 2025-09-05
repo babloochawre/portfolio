@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord of the Rings Book Jacket Redesign - Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-brown: #2B1D17;
+            --parchment: #E9D6B3;
+            --charcoal: #333333;
+            --light-tan: #F5F1E6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--charcoal);
+            line-height: 1.6;
+            background-color: var(--light-tan);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(rgba(43, 29, 23, 0.9), rgba(43, 29, 23, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232B1D17"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23D4AF37" stroke-width="2" opacity="0.2"/></svg>');
+            background-size: cover;
+            color: var(--parchment);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--parchment);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232B1D17"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="%23D4AF37" opacity="0.1"/></svg>');
+            background-size: cover;
+            color: var(--parchment);
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--dark-brown);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c19d2e;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            color: var(--dark-brown);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
+        .objective {
+            background-color: var(--parchment);
+        }
+        
+        .objective-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .objective-text {
+            flex: 1;
+        }
+        
+        .objective-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .objective-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .research {
+            background-color: var(--light-tan);
+        }
+        
+        .research-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .trend-card {
+            background-color: var(--parchment);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .trend-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .trend-icon {
+            font-size: 40px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .trend-card h3 {
+            color: var(--dark-brown);
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .design-concept {
+            background-color: var(--parchment);
+        }
+        
+        .concept-details {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .concept-text {
+            flex: 1;
+        }
+        
+        .concept-visual {
+            flex: 1;
+            background-color: var(--dark-brown);
+            border-radius: 10px;
+            padding: 30px;
+            color: var(--parchment);
+            text-align: center;
+        }
+        
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .color-item {
+            width: 150px;
+        }
+        
+        .color-box {
+            height: 100px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .color-info {
+            background-color: white;
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .gold-box {
+            background-color: var(--gold);
+        }
+        
+        .brown-box {
+            background-color: var(--dark-brown);
+        }
+        
+        .parchment-box {
+            background-color: var(--parchment);
+            color: var(--charcoal);
+            border: 1px solid #ddd;
+        }
+        
+        .improvements {
+            background-color: var(--light-tan);
+        }
+        
+        .improvements-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .improvement-item {
+            background-color: white;
+            padding: 20px;
+            border-left: 4px solid var(--gold);
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .mockups {
+            background-color: var(--parchment);
+            text-align: center;
+        }
+        
+        .mockup-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .mockup-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mockup-item img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .outcome {
+            background-color: var(--dark-brown);
+            color: var(--parchment);
+            text-align: center;
+        }
+        
+        .outcome-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quote {
+            font-family: 'Lora', serif;
+            font-size: 24px;
+            font-style: italic;
+            margin: 30px 0;
+            color: var(--gold);
+        }
+        
+        footer {
+            background-color: var(--charcoal);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 992px) {
+            .trends-grid,
+            .mockup-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .objective-content,
+            .concept-details {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">LOTR Redesign</div>
+                <ul class="nav-links">
+                    <li><a href="#objective">Objective</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#concept">Concept</a></li>
+                    <li><a href="#improvements">Improvements</a></li>
+                    <li><a href="#mockups">Mockups</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>The Lord of the Rings Book Jacket Redesign</h1>
+                <p>Modernizing Tolkien's classic for contemporary readers while honoring its legendary legacy</p>
+                <a href="#concept" class="btn">View Design Concept</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objective -->
+    <section id="objective" class="objective">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Objective</h2>
+            </div>
+            <div class="objective-content">
+                <div class="objective-text">
+                    <h3>Modernizing a Classic</h3>
+                    <p>The goal of this redesign was to modernize the classic <em>Lord of the Rings</em> book jacket while preserving the legendary aura of Tolkien's universe. The previous design was text-heavy, with dated typography and a literal depiction of the One Ring.</p>
+                    <p>The redesign aims to strike a balance between minimalism, cinematic impact, and modern publishing trends to make it more appealing to today's readers and collectors.</p>
+                    <p>By combining contemporary design aesthetics with traditional fantasy elements, we created a book jacket that honors the source material while feeling fresh and current.</p>
+                </div>
+                <div class="objective-image">
+                    <img src="C:\Users\BablooChawre\Desktop\portfolio\3D Book Mockup.jpeg" alt="Book Jacket Comparison">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research & Trends -->
+    <section id="research" class="research">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research & Trends</h2>
+            </div>
+            <div class="research-content">
+                <p>We analyzed current design trends in fantasy literature to create a book jacket that would appeal to modern readers while honoring the classic nature of Tolkien's work.</p>
+                
+                <div class="trends-grid">
+                    <div class="trend-card">
+                        <div class="trend-icon">
+                            <i class="fas fa-minimize"></i>
+                        </div>
+                        <h3>Minimalist Fantasy Covers</h3>
+                        <p>Contemporary fantasy book designs lean toward bold typography and minimal symbolic graphics rather than overloaded details.</p>
+                    </div>
+                    <div class="trend-card">
+                        <div class="trend-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Cinematic Influence</h3>
+                        <p>Readers associate Lord of the Rings with film adaptations, so a cinematic, poster-like composition resonates well.</p>
+                    </div>
+                    <div class="trend-card">
+                        <div class="trend-icon">
+                            <i class="fas fa-feather-alt"></i>
+                        </div>
+                        <h3>Dark Academia & Vintage Texture</h3>
+                        <p>Textured backgrounds, parchment-like tones, and serif fonts are trending in fantasy and mythological genres.</p>
+                    </div>
+                    <div class="trend-card">
+                        <div class="trend-icon">
+                            <i class="fas fa-sparkles"></i>
+                        </div>
+                        <h3>Foil & Metallic Finishes</h3>
+                        <p>Gold foiling for the ring inscription or title gives a premium collector's edition feel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Concept -->
+    <section id="concept" class="design-concept">
+        <div class="container">
+            <div class="section-title">
+                <h2>Design Concept</h2>
+            </div>
+            
+            <div class="concept-details">
+                <div class="concept-text">
+                    <h3>Visual Approach</h3>
+                    <p>The redesigned jacket features a dark textured parchment background with a central minimalist glowing ring silhouette. The Elvish inscription faintly glows around the ring, creating a sense of mystery and magic.</p>
+                    <p>We used a bold serif font for the title (inspired by the original), paired with modern spacing and subtle gradient lighting to add depth and dimension to the design.</p>
+                    <p>The spine features the ring symbol at the top, the title in large serif typography, and the author name at the bottom for a balanced, elegant look.</p>
+                </div>
+                <div class="concept-visual">
+                    <h3>Color Palette</h3>
+                    <p>The color scheme was carefully chosen to reflect the mystical, ancient world of Middle-earth while maintaining a premium, contemporary feel.</p>
+                    
+                    <div class="color-palette">
+                        <div class="color-item">
+                            <div class="color-box gold-box">Gold</div>
+                            <div class="color-info">
+                                <h4>#D4AF37</h4>
+                                <p>For title and inscription</p>
+                            </div>
+                        </div>
+                        <div class="color-item">
+                            <div class="color-box brown-box" style="color: white;">Deep Brown</div>
+                            <div class="color-info">
+                                <h4>#2B1D17</h4>
+                                <p>For contrast text</p>
+                            </div>
+                        </div>
+                        <div class="color-item">
+                            <div class="color-box parchment-box">Parchment</div>
+                            <div class="color-info">
+                                <h4>#E9D6B3</h4>
+                                <p>Background base</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Improvements -->
+    <section id="improvements" class="improvements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Improvements</h2>
+            </div>
+            
+            <div class="improvements-list">
+                <div class="improvement-item">
+                    <h3>Modern Typography Hierarchy</h3>
+                    <p>Clearer, bolder title treatment with improved readability and contemporary styling.</p>
+                </div>
+                <div class="improvement-item">
+                    <h3>Cleaner Visual Focus</h3>
+                    <p>Symbolic ring representation instead of cluttered 3D render for a more sophisticated look.</p>
+                </div>
+                <div class="improvement-item">
+                    <h3>Better Alignment and Spacing</h3>
+                    <p>Improved layout with careful attention to alignment and white space for enhanced readability.</p>
+                </div>
+                <div class="improvement-item">
+                    <h3>Trend-Driven Design</h3>
+                    <p>Incorporation of minimalist fantasy aesthetics that appeal to contemporary readers.</p>
+                </div>
+                <div class="improvement-item">
+                    <h3>Premium Look and Feel</h3>
+                    <p>Foiling and metallic accents that give the book jacket a collector's edition quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mockups -->
+    <section id="mockups" class="mockups">
+        <div class="container">
+            <div class="section-title">
+                <h2>Design Mockups</h2>
+            </div>
+            
+            <div class="mockup-gallery">
+                <div class="mockup-item">
+                    <h3>Flat Jacket Spread</h3>
+                    <img src="C:\Users\BablooChawre\Desktop\portfolio\Flat Jacket Spread.jpeg" alt="Flat Jacket Spread">
+                    <p>Front, spine, and back cover aligned for print production.</p>
+                </div>
+                <div class="mockup-item">
+                    <h3>3D Book Mockup</h3>
+                    <img src="C:\Users\BablooChawre\Desktop\portfolio\3D Book Mockup.jpeg"
+                    <p>Realistic perspective showing how the book appears in physical form.</p>
+                </div>
+                </div>
+                </div>
+    </section>
+
+    <!-- Outcome -->
+    <section class="outcome">
+        <div class="container">
+            <div class="section-title">
+                <h2>Final Outcome</h2>
+            </div>
+            <div class="outcome-content">
+                <p>The redesigned jacket positions <em>The Lord of the Rings</em> as a timeless, collectible, and modern fantasy epic. It blends Tolkien's mythical legacy with today's design standards, appealing both to loyal fans and new readers.</p>
+                
+                <p class="quote">"A perfect balance between honoring tradition and embracing contemporary design aesthetics."</p>
+                
+                <p>The final design successfully merges the rich history of Middle-earth with modern publishing trends, creating a book jacket that stands out in today's market while respecting the source material.</p>
+                
+                <a href="#" class="btn">View Full Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About the Project</h3>
+                    <p>A book jacket redesign for J.R.R. Tolkien's classic fantasy novel, The Lord of the Rings.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Designer</h3>
+                    <p>Babloo Chawre</p>
+                    <p>UI/UX & Graphic Designer</p>
+                    <div class="social-links">
+                        <a href=https://www.behance.net/babluchawre><i class="fab fa-behance"></i></a>
+                        <a href=https://www.linkedin.com/in/babloo-chawre-792b2a135/><i class="fab fa-linkedin"></i></a>
+                        <a href=https://www.instagram.com/artistrysoul.art/><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: babloo.chawre@gmail.com</p>
+                    <p>Phone: +91 9970641692</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 The Lord of the Rings Book Jacket Redesign. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

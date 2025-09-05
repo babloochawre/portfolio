@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haldiram's Brand Redesign - Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --maroon: #8E2323;
+            --saffron: #FF9933;
+            --ivory: #FFFFF0;
+            --dark: #333333;
+            --light: #F9F9F9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--maroon) 0%, #6b1a1a 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--saffron);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--saffron);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%238E2323"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="%23FF9933" opacity="0.2"/></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--saffron);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--saffron);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e5892b;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--maroon);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--saffron);
+        }
+        
+        .about-project {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .inspiration {
+            background-color: var(--ivory);
+        }
+        
+        .inspiration-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--maroon);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .design-process {
+            background-color: white;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .process-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .process-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .process-icon {
+            font-size: 40px;
+            color: var(--saffron);
+            margin-bottom: 20px;
+        }
+        
+        .process-card h3 {
+            color: var(--maroon);
+            margin-bottom: 15px;
+        }
+        
+        .color-system {
+            background-color: var(--ivory);
+            text-align: center;
+        }
+        
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .color-item {
+            width: 180px;
+        }
+        
+        .color-box {
+            height: 120px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .color-info {
+            background-color: white;
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .maroon-box {
+            background-color: var(--maroon);
+        }
+        
+        .saffron-box {
+            background-color: var(--saffron);
+        }
+        
+        .ivory-box {
+            background-color: var(--ivory);
+            color: var(--dark);
+            border: 1px solid #ddd;
+        }
+        
+        .final-design {
+            background-color: white;
+            text-align: center;
+        }
+        
+        .logo-showcase {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--ivory);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo-showcase img {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .logo-variations {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .logo-variant {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: var(--saffron);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--saffron);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 992px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Haldiram's</div>
+                <ul class="nav-links">
+                    <li><a href="#about">Project</a></li>
+                    <li><a href="#inspiration">Inspiration</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#colors">Colors</a></li>
+                    <li><a href="#final">Final Design</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Haldiram's Brand Redesign</h1>
+                <p>A modern reinterpretation of tradition, celebrating Indian heritage with global appeal</p>
+                <a href="#final" class="btn">View Final Design</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Project -->
+    <section id="about" class="about-project">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Project</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Revitalizing an Iconic Brand</h3>
+                    <p>Haldiram's is one of India's most beloved food brands, known for its traditional snacks and sweets. This redesign project aimed to modernize the brand while maintaining its rich heritage and cultural significance.</p>
+                    <p>The challenge was to create a visual identity that resonates with younger audiences while staying true to the brand's core values and appealing to its existing customer base.</p>
+                    <p>The new design system incorporates traditional Indian elements with contemporary design principles, creating a perfect balance between heritage and modernity.</p>
+                </div>
+                <div class="about-image">
+                    <img src="C:\Users\BablooChawre\Desktop\portfolio\Hero Image.jpg"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspiration -->
+    <section id="inspiration" class="inspiration">
+        <div class="container">
+            <div class="section-title">
+                <h2>Inspiration</h2>
+            </div>
+            <div class="inspiration-content">
+                <p class="quote">"Inspired by Indian tradition, crafted for global appeal"</p>
+                <p>The design draws inspiration from lotus, diya flame, mandala geometry, festive colors, Indian motifs.The goal was to create a visual language that speaks of authenticity while feeling contemporary and sophisticated.</p>
+                <p>Key elements were borrowed from traditional Indian art forms, architecture, and textile patterns, reinterpreted through a modern design lens to create a unique identity that stands out in both domestic and international markets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Process -->
+    <section id="process" class="design-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Design Process</h2>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Research & Discovery</h3>
+                    <p>Thorough analysis of the brand's history, market position, and competitor landscape to identify opportunities for differentiation.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>Concept Development</h3>
+                    <p>Creating multiple design directions exploring different aspects of Indian culture and modern design trends.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Visual Identity</h3>
+                    <p>Developing the color palette, typography, and graphic elements that form the core of the new brand identity.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3>Shape Construction</h3>
+                    <p>Based on Lotus and Serif typography, creating a distinctive logo mark that represents purity and tradition.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Color System</h3>
+                    <p>Selecting colors that represent heritage, celebration, and premium quality while ensuring visual harmony.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Finalization</h3>
+                    <p>Refining the chosen direction and preparing the complete brand guidelines for consistent application.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+            </div>
+            </div>
+            </div>
+    <!-- Full Composite -->
+    <section id="full" class="full-composite">
+        <div class="container">
+            <div class="section-title">
+                <h2>Full Composite Design</h2>
+            </div>
+            <div class="logo-showcase">
+                <img src="C:\Users\BablooChawre\Desktop\portfolio\Full composite.jpg" alt="Haldiram's New Logo">
+                <p>A reimagined brand identity for Haldiram’s, inspired by Indian cultural symbols like the lotus and diya. The modern serif logotype, heritage color palette, and versatile applications unify tradition with a global premium appeal.</p>
+            </div>
+            </div>
+            </div>
+    </section>
+    <!-- Color System -->
+    <section id="colors" class="color-system">
+        <div class="container">
+            <div class="section-title">
+                <h2>Color System</h2>
+            </div>
+            <p>The color palette was carefully selected to reflect Haldiram's heritage while creating a premium visual experience.</p>
+            <div class="color-palette">
+                <div class="color-item">
+                    <div class="color-box maroon-box">Maroon</div>
+                    <div class="color-info">
+                        <h4>#8E2323</h4>
+                        <p>Heritage & Richness</p>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box saffron-box">Saffron</div>
+                    <div class="color-info">
+                        <h4>#FF9933</h4>
+                        <p>Celebration & Flavor</p>
+                    </div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box ivory-box">Ivory</div>
+                    <div class="color-info">
+                        <h4>#FFFFF0</h4>
+                        <p>Premium & Balance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Design -->
+    <section id="final" class="final-design">
+        <div class="container">
+            <div class="section-title">
+                <h2>Final Logo Design</h2>
+            </div>
+            <div class="logo-showcase">
+                <img src="C:\Users\BablooChawre\Desktop\portfolio\Logo.jpg" alt="Haldiram's New Logo">
+                <p>The final logo combines traditional Devanagari-inspired letterforms with contemporary typography, creating a perfect balance between heritage and modernity.</p>
+            </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About the Project</h3>
+                    <p>A comprehensive brand redesign for Haldiram's, balancing traditional Indian elements with contemporary design principles.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Designer</h3>
+                    <p>Babloo Chawre</p>
+                    <p>UI/UX & Graphic Designer</p>
+                    <div class="social-links">
+                        <a href=https://www.behance.net/babluchawre><i class="fab fa-behance"></i></a>
+                        <a href=https://www.linkedin.com/in/babloo-chawre-792b2a135/><i class="fab fa-linkedin"></i></a>
+                        <a href=https://www.instagram.com/artistrysoul.art/><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: babloo.chawre@gmail.com</p>
+                    <p>Phone: +91 9970641692</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Haldiram's Brand Redesign Case Study. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
